@@ -1,0 +1,57 @@
+<html class="dark">
+
+<head>
+  <title>Home!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="./index.js"></script>
+</head>
+
+<body>
+  <div class="dark:bg-slate-800 min-h-full">
+    <button class="rounded-full bg-indigo-50" onclick="onClickButton()">
+      클릭하여 데이터 가져오기
+    </button>
+    <table class="table-auto dark:text-white" id="data-table">
+      <thead>
+        <tr>
+          <th>Song</th>
+          <th>Artist</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+          <td>Malcolm Lockyer</td>
+          <td>1961</td>
+        </tr>
+        <tr>
+          <td>Witchy Woman</td>
+          <td>The Eagles</td>
+          <td>1972</td>
+        </tr>
+        <tr>
+          <td>Shining Star</td>
+          <td>Earth, Wind, and Fire</td>
+          <td>1975</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
