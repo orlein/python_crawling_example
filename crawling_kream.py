@@ -69,7 +69,7 @@ def get_kream_rows_by_url(driver: webdriver.Chrome, target: KreamUrls):
   print(target['url'])
   driver.get(target['url'])
   soup = BeautifulSoup(driver.page_source, 'html.parser')
-  products = soup.select('div.search_result_list > div.product_card')
+  products = soup.select('div.search_result_list > div.search_result_item.product')
   rows = list(map(lambda product: get_row_from_product(target, product), products))
   return rows
 
