@@ -45,16 +45,19 @@ def create_data_json_name(target: KreamUrls):
 def sanitize_price_text(price: str) -> int:
   return int(re.sub(r'[^0-9]', '', price))
 
+def sanitize_text(text: str) -> str:
+  return text.strip()
+
 def get_row_from_product(target: KreamUrls, product: Tag):
   url = product.find('a')['href']
   brand = product.select_one('a > .product_info_area > .title > .brand').text
   product_name = product.select_one('a > .product_info_area > .title > .product_info_product_name > .translated_name').text
   price = product.select_one('a > .price_area > .amount').text
   row = {
-    'category': DataMapping.get_category(target['category']),
-    'brand': brand,
-    'gender': DataMapping.get_gender(target['gender']),
-    'product': product_name,
+    'category': DataMapping.get_category(sanitize_text(target['category'])),
+    'brand': sanitize_text(brand),
+    'gender': DataMapping.get_gender(sanitize_text(target['gender'])),
+    'product': sanitize_text(product_name),
     'price': sanitize_price_text(price),
     'url': url
   }
